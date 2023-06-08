@@ -74,7 +74,7 @@
           <li class="nav-item">
             <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
               <i class="ni ni-single-copy-04 text-pink"></i>
-              <span class="nav-link-text">Data Ujian</span>
+              <span class="nav-link-text">Data Quiz</span>
             </a>
             <div class="collapse" id="navbar-forms">
               <ul class="nav nav-sm flex-column">
@@ -87,13 +87,13 @@
           <li class="nav-item">
             <a class="nav-link {{Request::is('jadwal') ? 'active' : ''}}" href="/jadwal">
               <i class="fas fa-calendar-alt text-primary"></i>
-              <span class="nav-link-text">Jadwal Ujian</span>
+              <span class="nav-link-text">Jadwal Quiz</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{Request::is('ujian') ? 'active' : ''}}" href="/ujian">
+            <a class="nav-link {{Request::is('Quiz') ? 'active' : ''}}" href="/Quiz">
               <i class="far fa-file-alt text-success"></i>
-              <span class="nav-link-text">Ujian</span>
+              <span class="nav-link-text">Quiz</span>
             </a>
           </li>
           <li class="nav-item">
@@ -118,8 +118,27 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
+              <i class="fas fa-university"></i>
+              <span class="nav-link-text">Data Materi</span>
+            </a>
+            <div class="collapse" id="navbar-forms">
+              <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                  <a href="/matapelajaran" class="nav-link">Mata Pelajaran</a>
+                </li>
+                <li class="{{Request::path() == 'admin/kelas' ? 'active' : '' }}">
+                  <a href="{{ route('admin.kelas') }}" class="nav-link">Materi Praktikum</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('admin.blog') }}" class="nav-link">Materi Teori</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
               <i class="ni ni-single-copy-04 text-pink"></i>
-              <span class="nav-link-text">Data Ujian</span>
+              <span class="nav-link-text">Data Quiz</span>
             </a>
             <div class="collapse" id="navbar-forms">
               <ul class="nav nav-sm flex-column">
@@ -135,7 +154,7 @@
           <li class="nav-item">
             <a class="nav-link {{Request::is('jadwal') ? 'active' : ''}}" href="/jadwal">
               <i class="fas fa-calendar-alt text-primary"></i>
-              <span class="nav-link-text">Jadwal Ujian</span>
+              <span class="nav-link-text">Jadwal Quiz</span>
             </a>
           </li>
 
@@ -155,7 +174,7 @@
           <li class="nav-item">
             <a class="nav-link {{Request::is('jadwal') ? 'active' : ''}}" href="/jadwal">
               <i class="fas fa-calendar-alt text-primary"></i>
-              <span class="nav-link-text">Jadwal Ujian</span>
+              <span class="nav-link-text">Jadwal Quiz</span>
             </a>
           </li>
           <li class="nav-item">
@@ -189,7 +208,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{Request::is('ujian') ? 'active' : ''}}" href="/ujian">
+            <a class="nav-link {{Request::is('Quiz') ? 'active' : ''}}" href="/Quiz">
               <i class="far fa-file-alt text-success"></i>
               <span class="nav-link-text">Quiz</span>
             </a>

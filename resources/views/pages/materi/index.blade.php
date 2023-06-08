@@ -4,12 +4,14 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4>{{ $title }}</h4>
+            @if (auth()->user()->level == 'admin' || auth()->user()->level == 'guru')
+                <h4>Data Materi Praktikum</h4>
                 <div class="card-header-action">
-                    <a href="{{ route('admin.kelas.tambah') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.kelas.tambahvideo') }}" class="btn btn-primary">
                         Tambah
                     </a>
                 </div>
+                @endif
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -24,29 +26,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @php $no = 1; @endphp
-                            @foreach ($kelas as $item)
+                            @php $no = 1; @endphp
+                            @if (!empty($data))
+                            @foreach ($data as $item)
                             <tr>
                                 <td>{{ $no++}}</td>
                                 <td>{{ $item->name_kelas }}</td>
                                 <td>
-                                    @if ($item->type_kelas == 0)
-                                    Semester Awal
-                                    @elseif($item->type_kelas == 1)
-                                    Semester Pertengahan
-                                    @elseif($item->type_kelas == 2)
-                                    Semester Akhir
-                                    @endif
+                                    {{ $item->name_video}}
                                 </td>
+                                <td>{{ $item->name_kelas }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/' . $item->thumbnail) }}" width="200" alt="" srcset="">
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.kelas.detail',Crypt::encrypt($item->id)) }}"
-                                        class="btn btn-warning">Detail</a>
+                                    <a href="{{ route('admin.kelas.detail',Crypt::encrypt($item->id)) }}" class="btn btn-warning">Detail</a>
                                 </td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

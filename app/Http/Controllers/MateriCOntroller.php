@@ -8,17 +8,24 @@ use App\Models\Video;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Kelas;
+use App\Models\Ujian;
+use Illuminate\Support\Facades\DB;
+
+
 
 class MateriCOntroller extends Controller
 {
     public function index()
     {
-        $data = [
-            'title' => 'Data Master Kelas',
-            'kelas' => Materi::all()
-        ];
-
-        return view('pages.materi.index', $data);
+        // $data = [
+        //     'title' => 'Data Materi Praktikum',
+        //     'kelas' => DB::table('video')->join('siswas', 'video.kelas_id', '=', 'siswas.id_kelas')->join('kelas', 'siswas.id_user', '=', 'kelas.id')->where('siswas.id_user', auth()->user()->id)->get(),
+        // ];
+        $data = DB::table('video')->join('siswas', 'video.kelas_id', '=', 'siswas.id_kelas')->join('kelas', 'siswas.id_user', '=', 'kelas.id')->where('siswas.id_user', auth()->user()->id)->get();
+        // $userID = auth()->user()->id;
+        // echo $userID;
+        return view('pages.materi.index', compact('data'));
     }
 
     public function tambah()
@@ -26,7 +33,7 @@ class MateriCOntroller extends Controller
         $data = [
             'title' => 'Tambah Kelas',
         ];
-        return view('pages.materi.tambah', $data);
+        return view('pages.materi.tambahvideo', $data);
     }
 
     public function simpan(Request $request)
@@ -115,34 +122,37 @@ class MateriCOntroller extends Controller
         }
     }
 
-    public function tambahvideo($id)
+    public function tambahvideo()
     {
-        $data = [
-            'title' => 'Tambah Video Materi',
-            'id' => $id
-        ];
+        // $data = [
+        //     'title' => 'Tambah Video Materi',
+        //     'id' => $id
+        // ];
+        $kelas = Kelas::all();
 
-        return view('pages.materi.tambahvideo',$data);
+        return view('pages.materi.tambahvideo', compact('kelas'));
     }
 
-    public function simpanvideo(Request $request,$id)
+    public function simpanvideo(Request $request)
     {
 
         $validator = Validator($request->all(), [
             'name_video' => 'required',
             'url_video' => 'required',
+            'kelas_id' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('admin.kelas.tambahvideo',$id)->withErrors($validator)->withInput();
+            return redirect()->route('admin.kelas.tambahvideo')->withErrors($validator)->withInput();
         } else {
             $obj = [
                 'name_video' => $request->name_video,
-                'kelas_id' => Crypt::decrypt($id),
+                'kelas_id' => $request->kelas_id,
                 'url_video' => $request->url_video,
             ];
-            Video::insert($obj);
-            return redirect()->route('admin.kelas.detail',$id)->with('status', 'Berhasil Menambah Materi Video');
+            // Video::insert($obj);
+            DB::table('video')->insert($obj);
+            return redirect()->route('admin.kelas')->with('status', 'Berhasil Menambah Materi Video');
         }
     }
 

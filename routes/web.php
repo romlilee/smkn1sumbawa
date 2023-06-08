@@ -59,9 +59,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek,guru,siswa']], fun
     Route::get('materi/hapus/{id}', [MateriCOntroller::class, 'hapus'])->name('admin.kelas.hapus');
     Route::get('materi/edit/{id}', [MateriCOntroller::class, 'edit'])->name('admin.kelas.edit');
     Route::post('materi/update/{id}', [MateriCOntroller::class, 'update'])->name('admin.kelas.update');
-    Route::get('materi/tambahvideo/{id}', [MateriCOntroller::class, 'tambahvideo'])->name('admin.kelas.tambahvideo');
-    Route::post('materi/simpanvideo/{id}', [MateriCOntroller::class, 'simpanvideo'])->name('admin.kelas.simpanvideo');
-    Route::get('materi/hapusvideo/{id}/{idkelas}', [MateriCOntroller::class, 'hapusvideo'])->name('admin.kelas.hapusvideo');
+    Route::get('materi/tambahvideo', [MateriCOntroller::class, 'tambahvideo'])->name('admin.kelas.tambahvideo');
+    Route::post('materi/simpanvideo', [MateriCOntroller::class, 'simpanvideo'])->name('admin.kelas.simpanvideo');
+    Route::get('materi/hapusvideo/{id}', [MateriCOntroller::class, 'hapusvideo'])->name('admin.kelas.hapusvideo');
 
     Route::get('/ujian', [UjianController::class, 'pilihMapel']);
     Route::get('/ujian/{id}', [UjianController::class, 'mulaiUjian'])->name('mulaiUjian');
