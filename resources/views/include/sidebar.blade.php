@@ -157,7 +157,6 @@
               <span class="nav-link-text">Jadwal Quiz</span>
             </a>
           </li>
-
           @elseif (auth()->user()->level == 'kepsek')
           <li class="nav-item">
             <a class="nav-link {{Request::is('/') ? 'active' : ''}}" href="/">
