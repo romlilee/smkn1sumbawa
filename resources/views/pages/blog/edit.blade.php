@@ -25,7 +25,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Konten</label>
+                        <label for="">Materi</label>
                         <textarea name="content_blog" class="ckeditor @error('content_blog') is-invalid @enderror"
                             id="ckeditor">
                         {{ $blog->content_blog }}

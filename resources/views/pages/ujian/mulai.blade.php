@@ -117,9 +117,6 @@
                         <input type="hidden" name="index" value="<?php echo $key+1 ?>">
                         <input type="hidden" name="id_soal" value="{{ $value->id }}">
                     </div>
-                    <div class="card-footer">
-                      <small>Waktu menjawab satu soal: 1 menit 48 detik</small>
-                    </div>
                 </div>
                 @endforeach
                 <div class="modal-footer">

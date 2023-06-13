@@ -22,7 +22,7 @@
                     <div class="col-md-12">
                         <table>
                             <tr>
-                                <td style="vertical-align: top">Konten</td>
+                                <td style="vertical-align: top">Materi</td>
                                 <td style="vertical-align: top" class="py-2 px-3">:</td>
                                 <td>{!! $blog->content_blog !!}</td>
                             </tr>
