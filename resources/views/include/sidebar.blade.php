@@ -91,7 +91,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{Request::is('Quiz') ? 'active' : ''}}" href="/Quiz">
+            <a class="nav-link {{Request::is('Quiz') ? 'active' : ''}}" href="/ujian">
               <i class="far fa-file-alt text-success"></i>
               <span class="nav-link-text">Quiz</span>
             </a>

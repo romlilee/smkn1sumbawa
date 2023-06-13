@@ -18,13 +18,14 @@ class MateriCOntroller extends Controller
 {
     public function index()
     {
-        // $data = [
-        //     'title' => 'Data Materi Praktikum',
-        //     'kelas' => DB::table('video')->join('siswas', 'video.kelas_id', '=', 'siswas.id_kelas')->join('kelas', 'siswas.id_user', '=', 'kelas.id')->where('siswas.id_user', auth()->user()->id)->get(),
-        // ];
-        $data = DB::table('video')->join('siswas', 'video.kelas_id', '=', 'siswas.id_kelas')->join('kelas', 'siswas.id_user', '=', 'kelas.id')->where('siswas.id_user', auth()->user()->id)->get();
-        // $userID = auth()->user()->id;
-        // echo $userID;
+        $cek_user = DB::table('gurus')->join('users', 'gurus.id_user', '=', 'users.id')->where('gurus.id_user', auth()->user()->id)->first();
+        if (!empty($cek_user)) {
+            $data = DB::table('video')->join('kelas', 'video.kelas_id', '=', 'kelas.id')->join('gurus', 'kelas.id_guru', '=', 'gurus.id')->where('gurus.id_user', auth()->user()->id)->select('video.id', 'video.name_video', 'kelas.nama_kelas')->get();
+        }else{
+            $data = DB::table('video')->join('kelas', 'video.kelas_id', '=', 'kelas.id')->join('siswas', 'kelas.id', '=', 'siswas.id_kelas')->where('siswas.id_user', auth()->user()->id)->get();
+        }
+       
+        // echo $data;
         return view('pages.materi.index', compact('data'));
     }
 

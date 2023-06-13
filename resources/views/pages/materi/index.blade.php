@@ -19,9 +19,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Kelas</th>
-                                <th>Tipe Kelas</th>
-                                <th>Thumbnail</th>
+                                <th>Judul Materi</th>
+                                <th>Kelas</th>
                                 <th width="10%">Aksi</th>
                             </tr>
                         </thead>
@@ -31,11 +30,10 @@
                             @foreach ($data as $item)
                             <tr>
                                 <td>{{ $no++}}</td>
-                                <td>{{ $item->name_kelas }}</td>
+                                <td>{{$item->name_video}}</td>
                                 <td>
-                                    {{ $item->name_video}}
+                                    {{ $item->nama_kelas}}
                                 </td>
-                                <td>{{ $item->name_kelas }}</td>
                                 <td>
                                     <a href="{{ route('admin.kelas.detail',Crypt::encrypt($item->id)) }}" class="btn btn-warning">Detail</a>
                                 </td>
