@@ -41,7 +41,7 @@ Route::get('/belajar', [BeljarController::class, 'index'])->name('kelasb');
 Route::get('/belajar/detail/{id}', [BeljarController::class, 'detail'])->name('kelasb.detail');
 Route::get('/belajar/pelajar/{id}/{idvideo}', [BeljarController::class, 'belajar'])->name('kelasb.belajar');
 
-Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek,guru,siswa']], function() {
+Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek,guru,siswa']], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
 
     Route::resource('siswa', SiswaController::class);
@@ -75,9 +75,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,kepsek,guru,siswa']], fun
     //Blog
     Route::get('/admin/blog', [BlogController::class, 'index'])->name('admin.blog');
     Route::get('/admin/blog/tambah', [BlogController::class, 'tambah'])->name('admin.blog.tambah');
-    Route::post('/admin/blog/simpan', [BlogController::class,'simpan'])->name('admin.blog.simpan');
-    Route::get('/admin/blog/hapus/{id}', [BlogController::class,'hapus'])->name('admin.blog.hapus');
-    Route::get('/admin/blog/detail/{id}', [BlogController::class,'detail'])->name('admin.blog.detail');
-    Route::get('/admin/blog/edit/{id}', [BlogController::class,'edit'])->name('admin.blog.edit');
-    Route::post('/admin/blog/update/{id}', [BlogController::class,'update'])->name('admin.blog.update');
+    Route::post('/admin/blog/simpan', [BlogController::class, 'simpan'])->name('admin.blog.simpan');
+    Route::get('/admin/blog/hapus/{id}', [BlogController::class, 'hapus'])->name('admin.blog.hapus');
+    Route::get('/admin/blog/detail/{id}', [BlogController::class, 'detail'])->name('admin.blog.detail');
+    Route::get('/admin/blog/edit/{id}', [BlogController::class, 'edit'])->name('admin.blog.edit');
+    Route::post('/admin/blog/update/{id}', [BlogController::class, 'update'])->name('admin.blog.update');
 });
