@@ -123,7 +123,7 @@
             </a>
             <div class="collapse" id="navbar-forms">
               <ul class="nav nav-sm flex-column">
-              <li class="nav-item">
+                <li class="nav-item">
                   <a href="/matapelajaran" class="nav-link">Mata Pelajaran</a>
                 </li>
                 <li class="{{Request::path() == 'admin/kelas' ? 'active' : '' }}">
@@ -142,9 +142,6 @@
             </a>
             <div class="collapse" id="navbar-forms">
               <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a href="/matapelajaran" class="nav-link">Mata Pelajaran</a>
-                </li>
                 <li class="nav-item">
                   <a href="/soal" class="nav-link">Soal</a>
                 </li>
